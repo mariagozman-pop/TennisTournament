@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation 'mysql:mysql-connector-java:8.0.23'
+
+    // Spring Boot Starter for Web (REST API)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring Boot Starter for JPA (Hibernate)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Spring Boot Security (for authentication)
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // Spring Boot Validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Thymeleaf (if using templates)
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // Database Driver (Choose one)
+    implementation 'mysql:mysql-connector-java' // MySQL Driver
+    // implementation 'org.postgresql:postgresql' // PostgreSQL Driver
+
+    // H2 Database (for testing)
+    runtimeOnly 'com.h2database:h2'
+
+    // Lombok (for reducing boilerplate code)
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Testing dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
